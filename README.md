@@ -49,6 +49,14 @@ See the [Help Section](https://rickleinecker.github.io/SeeShells/help) for modif
  - Wesley Newcomb [@wesnewcomb](https://github.com/wesnewcomb)
  - Jake Norris [@jakenorris1124](https://github.com/jakenorris1124)
 
+ ### v4 Developers
+- Carson Prewitt [@Crazycorgi](https://github.com/Crazycorgi)
+- Mitchell Johnston [@mdj43](https://github.com/mdj43)
+- Angel Blandon [@goonondek](https://github.com/goonondek)
+- Michael Mudo @[michaelmudo](https://github.com/michaelmudo)
+- Jaden Pell [@JPell99](https://github.com/JPell99)
+- Jackson Cammack [@Jackson-Cammack](https://github.com/Jackson-Cammack)
+
 ### Sponsor
 - (V1 and V2) Richard Leinecker [@RickLeinecker](https://github.com/RickLeinecker)
 - (V3) Edward Amoruso [@eamoruso](https://github.com/eamoruso/)
