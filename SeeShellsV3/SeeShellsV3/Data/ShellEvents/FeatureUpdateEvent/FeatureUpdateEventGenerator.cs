@@ -42,14 +42,16 @@ namespace SeeShellsV3.Data
                 });
         }
 
+        private const int MIN_GROUP_SIZE = 10;
+
         private IEnumerable<IEnumerable<ItemLastRegistryWriteEvent>> GetSubsequences(IEnumerable<IShellEvent> sequence)
         {
             // Return large, contiguous subseqences of last registry write events
             // with the same timestamp (probably windows feature update)
             return sequence
                 .OfType<ItemLastRegistryWriteEvent>()
-                .GroupWhile((p, n) => p.TimeStamp.Subtract(n.TimeStamp).Duration().Minutes <= 1)
-                .Where(s => s.Count() >= sequence.OfType<ItemLastRegistryWriteEvent>().Count() / 10);
+                .GroupWhile((p, n) => p.TimeStamp.Subtract(n.TimeStamp).Duration().TotalSeconds <= 5)
+                .Where(s => s.Count() >= MIN_GROUP_SIZE);
         }
     }
 }
