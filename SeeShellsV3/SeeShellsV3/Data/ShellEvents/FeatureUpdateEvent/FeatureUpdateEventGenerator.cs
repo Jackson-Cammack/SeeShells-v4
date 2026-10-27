@@ -42,7 +42,7 @@ namespace SeeShellsV3.Data
                 });
         }
 
-        private const int MIN_GROUP_SIZE = 10;
+        private const int MIN_GROUP_SIZE = 5;
 
         private IEnumerable<IEnumerable<ItemLastRegistryWriteEvent>> GetSubsequences(IEnumerable<IShellEvent> sequence)
         {
@@ -50,7 +50,7 @@ namespace SeeShellsV3.Data
             // with the same timestamp (probably windows feature update)
             return sequence
                 .OfType<ItemLastRegistryWriteEvent>()
-                .GroupWhile((p, n) => p.TimeStamp.Subtract(n.TimeStamp).Duration().TotalSeconds <= 5)
+                .GroupWhile((p, n) => p.TimeStamp.Subtract(n.TimeStamp).Duration().TotalMinutes <= 1)
                 .Where(s => s.Count() >= MIN_GROUP_SIZE);
         }
     }
