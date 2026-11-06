@@ -362,3 +362,6 @@ MigrationBackup/
 FodyWeavers.xsd
 /Case Studies/Case Study 1/test.csv
 /Case Studies/Case Study 1/test.pdf
+
+# macOS Finder metadata
+.DS_Store

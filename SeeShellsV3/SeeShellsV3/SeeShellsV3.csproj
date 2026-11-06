@@ -25,8 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="C:\Users\User\.nuget\packages\wpfhexaeditor\2.1.6\contentFiles\any\net5.0-windows7.0\Resources\EBCDIC-NoSpecialChar.tbl" />
-    <Content Remove="C:\Users\User\.nuget\packages\wpfhexaeditor\2.1.6\contentFiles\any\net5.0-windows7.0\Resources\EBCDIC.tbl" />
+    <!-- NuGetPackageRoot resolves to the local NuGet cache on any machine (includes trailing slash). -->
+    <Content Remove="$(NuGetPackageRoot)wpfhexaeditor\2.1.6\contentFiles\any\net5.0-windows7.0\Resources\EBCDIC-NoSpecialChar.tbl" />
+    <Content Remove="$(NuGetPackageRoot)wpfhexaeditor\2.1.6\contentFiles\any\net5.0-windows7.0\Resources\EBCDIC.tbl" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,14 +56,6 @@
     <EmbeddedResource Include="Timezones.csv" />
     <Resource Include="UI\Images\beach2.png" />
     <Resource Include="UI\Images\SeeShells.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repositories\TimezoneCollection\" />
-    <Folder Include="Repositories\ReportEventCollection\" />
-    <Folder Include="Events\" />
-    <Folder Include="Services\TimezoneManager\" />
-    <Folder Include="Services\PaletteManager\" />
   </ItemGroup>
 
 </Project>
