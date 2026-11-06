@@ -3,9 +3,12 @@ name: .NET
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
+
+env:
+  SOLUTION: SeeShellsV3/SeeShellsV3.sln
 
 jobs:
   build:
@@ -17,12 +20,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        # Matches the projects' existing target (net7.0-windows); not a framework upgrade.
+        dotnet-version: 7.0.x
     - name: Clean
-      run: dotnet clean SeeShellsV2 && dotnet nuget locals all --clear
+      run: dotnet clean ${{ env.SOLUTION }} && dotnet nuget locals all --clear
     - name: Restore dependencies
-      run: dotnet restore SeeShellsV2
+      run: dotnet restore ${{ env.SOLUTION }}
     - name: Build
-      run: dotnet build SeeShellsV2 --no-restore
+      run: dotnet build ${{ env.SOLUTION }} --no-restore
     - name: Test
-      run: dotnet test SeeShellsV2 --no-build --verbosity normal
+      run: dotnet test ${{ env.SOLUTION }} --no-build --verbosity normal
