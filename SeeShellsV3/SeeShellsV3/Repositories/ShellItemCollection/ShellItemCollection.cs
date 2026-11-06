@@ -21,7 +21,10 @@ namespace SeeShellsV3.Repositories
             collectionViewSource.Source = this;
             collectionViewSource.Filter += (o, e) =>
             {
-                foreach (var callback in Filter?.GetInvocationList())
+                // No subscribers (e.g. no UI attached): accept every item.
+                if (Filter == null) return;
+
+                foreach (var callback in Filter.GetInvocationList())
                 {
                     callback.DynamicInvoke(o, e);
 
