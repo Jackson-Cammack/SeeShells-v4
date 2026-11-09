@@ -1,28 +1,34 @@
-name: .NET
+name: .NET CI
 
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+
+permissions:
+  contents: read
 
 jobs:
   build:
-
     runs-on: windows-latest
 
+    defaults:
+      run:
+        working-directory: SeeShellsV3
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-    - name: Clean
-      run: dotnet clean SeeShellsV2 && dotnet nuget locals all --clear
-    - name: Restore dependencies
-      run: dotnet restore SeeShellsV2
-    - name: Build
-      run: dotnet build SeeShellsV2 --no-restore
-    - name: Test
-      run: dotnet test SeeShellsV2 --no-build --verbosity normal
+      - uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore SeeShellsV3.sln
+
+      - name: Build
+        run: dotnet build SeeShellsV3.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test SeeShellsV3Tests/SeeShellsV3Tests.csproj --configuration Release --no-build --no-restore --verbosity normal
