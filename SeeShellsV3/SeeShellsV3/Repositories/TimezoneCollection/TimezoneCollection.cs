@@ -17,7 +17,7 @@ public class TimezoneCollection: ObservableSortedList<ITimezone>, ITimezoneColle
         collectionViewSource.Source = this;
         collectionViewSource.Filter += (o, e) =>
         {
-            foreach (var callback in Filter?.GetInvocationList())
+            foreach (var callback in Filter?.GetInvocationList() ?? Array.Empty<Delegate>())
             {
                 callback.DynamicInvoke(o, e);
 
