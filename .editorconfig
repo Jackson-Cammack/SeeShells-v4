@@ -1,0 +1,25 @@
+# EditorConfig: https://editorconfig.org
+# Indentation rules only. Line endings, charset and final newlines are left
+# unset until the repo-wide formatting pass, so editors don't rewrite
+# untouched lines in existing files.
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+
+[*.{cs,xaml}]
+indent_size = 4
+
+[*.{csproj,props,targets,config,manifest,xml}]
+indent_size = 2
+
+[*.{json,js,jsx,css,html,yml,yaml}]
+indent_size = 2
+
+[*.md]
+indent_size = 2
+trim_trailing_whitespace = false
+
+[*.sln]
+indent_style = tab
