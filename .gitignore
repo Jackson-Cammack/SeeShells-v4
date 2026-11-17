@@ -360,8 +360,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/Case Studies/Case Study 1/test.csv
-/Case Studies/Case Study 1/test.pdf
 
 # OS-generated files
 .DS_Store
